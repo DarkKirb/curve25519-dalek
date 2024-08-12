@@ -56,10 +56,7 @@ fn main() {
                 }
             }
             // default between serial / simd (if potentially capable)
-            _ => match is_capable_simd(&target_arch, curve25519_dalek_bits) {
-                true => "simd",
-                false => "serial",
-            },
+            _ => "serial",
         };
     println!("cargo:rustc-cfg=curve25519_dalek_backend=\"{curve25519_dalek_backend}\"");
 }
